@@ -18,7 +18,7 @@ import Home from "./pages/Home";
 
 const theme = createMuiTheme(themeObject);
 
-axios.defaults.baseURL = "http://localhost:5000/api/v1/";
+axios.defaults.baseURL = "https://shrouded-scrubland-02815.herokuapp.com/";
 
 function App() {
   return (
