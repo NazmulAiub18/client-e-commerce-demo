@@ -1,25 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import axios from "axios";
+
+//Mui Staff
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
+import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
+import themeObject from "./utils/theme";
+
+//context provider
+import { CartProvider } from "./context/cart";
+
+//components
+import Navbar from "./components/layout/Navbar";
+
+//pages
+import Home from "./pages/Home";
+
+const theme = createMuiTheme(themeObject);
+
+axios.defaults.baseURL = "http://localhost:5000/api/v1/";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <MuiThemeProvider theme={theme}>
+        <CssBaseline />
+        <CartProvider>
+          <Navbar />
+          <Home />
+        </CartProvider>
+      </MuiThemeProvider>
+    </>
   );
 }
 
